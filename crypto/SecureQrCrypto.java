@@ -1,3 +1,5 @@
+package crypto;
+
 /**
  * QR 코드 암호화 인터페이스
  */

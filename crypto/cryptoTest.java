@@ -1,4 +1,4 @@
-import java.security.NoSuchAlgorithmException;
+package crypto;
 
 public class cryptoTest {
     public static void main(String[] args) throws Exception {

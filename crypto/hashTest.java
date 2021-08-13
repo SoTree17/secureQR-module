@@ -1,3 +1,5 @@
+package crypto;
+
 import java.security.NoSuchAlgorithmException;
 
 public class hashTest {
