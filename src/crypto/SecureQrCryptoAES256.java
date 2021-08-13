@@ -7,12 +7,17 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public class SecureQrCryptoAES256 implements SecureQrCrypto {
+    public static final String METHOD_TYPE = "AES256";
+    @Override
+    public String getMethodType() {
+        return METHOD_TYPE;
+    }
+
     public static String alg = "AES/CBC/PKCS5Padding";
     private String key = "00000000000000000000000000000000000";
     private String iv = key.substring(0, 16);
 
     public void setKey(String _key) {
-        System.out.println(_key);
         try {
             if (_key.length() == 32) {
                 this.key = _key;

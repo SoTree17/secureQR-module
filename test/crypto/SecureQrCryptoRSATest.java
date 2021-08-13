@@ -3,6 +3,8 @@ package crypto;
 import junit.framework.TestCase;
 import util.RandomString;
 
+import java.security.NoSuchAlgorithmException;
+
 public class SecureQrCryptoRSATest extends TestCase {
 
     public void testEncryptDecrypt() throws Exception {
@@ -13,5 +15,11 @@ public class SecureQrCryptoRSATest extends TestCase {
         String cipherText = myCrpyto.encrypt(origin);
 
         assertEquals(origin, myCrpyto.decrypt(cipherText));
+    }
+
+    public void testGetType() throws NoSuchAlgorithmException {
+        SecureQrCryptoRSA rsa = new SecureQrCryptoRSA();
+        assertEquals("CRYPTO", rsa.getInstanceType());
+        assertEquals("RSA", rsa.getMethodType());
     }
 }

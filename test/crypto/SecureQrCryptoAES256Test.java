@@ -24,4 +24,10 @@ public class SecureQrCryptoAES256Test extends TestCase {
 
         assertEquals(origin, myCrpyto.decrypt(cipherText));
     }
+
+    public void testGetType() {
+        SecureQrCryptoAES256 aes = new SecureQrCryptoAES256();
+        assertEquals("CRYPTO", aes.getInstanceType());
+        assertEquals("AES256", aes.getMethodType());
+    }
 }

@@ -6,6 +6,13 @@ import java.security.NoSuchAlgorithmException;
  * QR 코드 해시 인터페이스
  */
 public interface SecureQrHash {
+    String INSTANCE_TYPE = "HASH";
+
+    default String getInstanceType() {
+        return INSTANCE_TYPE;
+    }
+
+    String getMethodType();
     String getHash(String message) throws NoSuchAlgorithmException;
 
     /**

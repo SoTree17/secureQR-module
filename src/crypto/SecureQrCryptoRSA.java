@@ -5,6 +5,12 @@ import java.util.Base64;
 import javax.crypto.Cipher;
 
 public class SecureQrCryptoRSA implements SecureQrCrypto {
+    public static final String METHOD_TYPE = "RSA";
+    @Override
+    public String getMethodType() {
+        return METHOD_TYPE;
+    }
+
     private final PublicKey publicKey;
     private final PrivateKey privateKey;
 

@@ -5,6 +5,12 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class SecureQrHashMD5 implements SecureQrHash {
+    public static final String METHOD_TYPE = "MD5";
+    @Override
+    public String getMethodType() {
+        return METHOD_TYPE;
+    }
+
     @Override
     public String getHash(String message) throws NoSuchAlgorithmException {
         MessageDigest md5 = MessageDigest.getInstance("MD5");

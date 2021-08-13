@@ -13,4 +13,10 @@ public class SecureQrHashMD5Test extends TestCase {
         SecureQrHashMD5 b = new SecureQrHashMD5();
         assertEquals(a.getHash(message), b.getHash(message));
     }
+
+    public void testGetType() throws NoSuchAlgorithmException {
+        SecureQrHashMD5 md5 = new SecureQrHashMD5();
+        assertEquals("HASH", md5.getInstanceType());
+        assertEquals("MD5", md5.getMethodType());
+    }
 }
