@@ -5,8 +5,8 @@ import java.util.Base64;
 import javax.crypto.Cipher;
 
 public class SecureQrCryptoRSA implements SecureQrCrypto {
-    private PublicKey publicKey;
-    private PrivateKey privateKey;
+    private final PublicKey publicKey;
+    private final PrivateKey privateKey;
 
     /**
      * 생성자에서 RSA 키 쌍 생성

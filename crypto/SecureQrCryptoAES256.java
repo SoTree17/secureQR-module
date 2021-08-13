@@ -1,5 +1,6 @@
 package crypto;
 
+import util.RandomString;
 import java.util.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -8,18 +9,24 @@ import javax.crypto.spec.SecretKeySpec;
 public class SecureQrCryptoAES256 implements SecureQrCrypto {
     public static String alg = "AES/CBC/PKCS5Padding";
     private String key = "00000000000000000000000000000000000";
-    private final String iv = key.substring(0, 16);
+    private String iv = key.substring(0, 16);
 
-    public void setSecretKey(String _key) throws Exception {
+    public void setSecretKey(String _key) {
+        System.out.println(_key);
         try {
-            if (_key.length() == 32)
+            if (_key.length() == 32) {
                 this.key = _key;
+                this.iv = key.substring(0, 16);
+            }
             else
                 throw new Exception();
         } catch (Exception e) {
             System.out.println("Key 는 32자여야 합니다.");
         }
+    }
 
+    SecureQrCryptoAES256() {
+        setSecretKey(RandomString.getString(32));
     }
 
     @Override

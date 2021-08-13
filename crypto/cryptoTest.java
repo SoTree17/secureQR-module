@@ -7,7 +7,6 @@ public class cryptoTest {
 
         // AES 암호화 테스트
         SecureQrCryptoAES256 aes256 = new SecureQrCryptoAES256();
-        aes256.setSecretKey("01234567890123456789012345678901");
         myCrpyto = aes256;
         String cipherText = myCrpyto.encrypt(origin);
         System.out.println(cipherText);
