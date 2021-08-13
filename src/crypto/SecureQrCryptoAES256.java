@@ -11,7 +11,7 @@ public class SecureQrCryptoAES256 implements SecureQrCrypto {
     private String key = "00000000000000000000000000000000000";
     private String iv = key.substring(0, 16);
 
-    public void setSecretKey(String _key) {
+    public void setKey(String _key) {
         System.out.println(_key);
         try {
             if (_key.length() == 32) {
@@ -25,8 +25,12 @@ public class SecureQrCryptoAES256 implements SecureQrCrypto {
         }
     }
 
+    public String getKey() {
+        return this.key;
+    }
+
     SecureQrCryptoAES256() {
-        setSecretKey(RandomString.getString(32));
+        setKey(RandomString.getString(32));
     }
 
     @Override
