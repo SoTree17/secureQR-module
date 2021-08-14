@@ -11,7 +11,7 @@ public class SecureQrHashSHA256Test extends TestCase {
         String message = RandomString.getString(32);
         SecureQrHash a = new SecureQrHashSHA256();
         SecureQrHashSHA256 b = new SecureQrHashSHA256();
-        assertEquals(a.getHash(message), b.getHash(message));
+        assertEquals(a.hashing(message), b.hashing(message));
     }
 
     public void testGetType() throws NoSuchAlgorithmException {

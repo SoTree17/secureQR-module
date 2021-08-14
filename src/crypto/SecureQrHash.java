@@ -13,7 +13,7 @@ public interface SecureQrHash {
     }
 
     String getMethodType();
-    String getHash(String message) throws NoSuchAlgorithmException;
+    String hashing(String message) throws NoSuchAlgorithmException;
 
     /**
      * Converts a byte array to a hexadecimal string.

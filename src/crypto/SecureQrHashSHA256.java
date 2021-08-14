@@ -11,7 +11,7 @@ public class SecureQrHashSHA256 implements SecureQrHash {
     }
 
     @Override
-    public String getHash(String message) throws NoSuchAlgorithmException {
+    public String hashing(String message) throws NoSuchAlgorithmException {
         MessageDigest sha265 = MessageDigest.getInstance("SHA-256");
         sha265.update(message.getBytes());
         return SecureQrHash.byteToHexString(sha265.digest());

@@ -11,7 +11,7 @@ public class SecureQrHashMD5Test extends TestCase {
         String message = RandomString.getString(32);
         SecureQrHash a = new SecureQrHashMD5();
         SecureQrHashMD5 b = new SecureQrHashMD5();
-        assertEquals(a.getHash(message), b.getHash(message));
+        assertEquals(a.hashing(message), b.hashing(message));
     }
 
     public void testGetType() throws NoSuchAlgorithmException {
