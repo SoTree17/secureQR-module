@@ -1,6 +1,6 @@
 package crypto;
 
-import util.MethodPair;
+import qr_util.MethodPair;
 import java.util.ArrayList;
 
 

@@ -1,7 +1,7 @@
 package crypto;
 
 import junit.framework.TestCase;
-import util.RandomString;
+import qr_util.RandomString;
 
 import java.security.NoSuchAlgorithmException;
 

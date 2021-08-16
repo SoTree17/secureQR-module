@@ -1,4 +1,4 @@
-package util;
+package qr_util;
 
 import crypto.SecureQrCrypto;
 import crypto.SecureQrHash;

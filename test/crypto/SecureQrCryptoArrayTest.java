@@ -1,9 +1,7 @@
 package crypto;
 
 import junit.framework.TestCase;
-import util.RandomString;
-
-import java.security.NoSuchAlgorithmException;
+import qr_util.RandomString;
 
 public class SecureQrCryptoArrayTest extends TestCase {
 

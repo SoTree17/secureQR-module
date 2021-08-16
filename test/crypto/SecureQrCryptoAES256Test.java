@@ -1,8 +1,6 @@
 package crypto;
 
-import org.junit.Rule;
-import org.junit.rules.ExpectedException;
-import util.RandomString;
+import qr_util.RandomString;
 import junit.framework.TestCase;
 
 public class SecureQrCryptoAES256Test extends TestCase {

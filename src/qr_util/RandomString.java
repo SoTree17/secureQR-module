@@ -1,4 +1,4 @@
-package util;
+package qr_util;
 
 import java.util.Random;
 
