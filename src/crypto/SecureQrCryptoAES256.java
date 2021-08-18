@@ -6,14 +6,14 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+
 public class SecureQrCryptoAES256 implements SecureQrCrypto {
     public static final String METHOD_TYPE = "AES256";
+    // public final String Method_TYPE = "AES256";
     @Override
-    public String getMethodType() {
-        return METHOD_TYPE;
-    }
+    public String getMethodType() { return METHOD_TYPE; }
 
-    public static String alg = "AES/CBC/PKCS5Padding";
+    public static String alg = "AES/CBC/PKCS5Padding"; //해당 문자열로부터, Chiper 객체 생성시, AES 암호화, ECB Operation mode, PKCS5 padding Scheme 으로 초기화하라고 요청
     private String key = "00000000000000000000000000000000000";
     private String iv = key.substring(0, 16);
 
