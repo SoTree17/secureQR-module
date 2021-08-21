@@ -45,7 +45,7 @@ public class SecureQrCryptoArrayTest2 extends TestCase {
         assertEquals(aes256.decrypt(encryptedText1), arr.getLastCrypto().decrypt(encryptedText2));
 
 
-        String test1 = aes256.getInstanceType();
+        String test1 = aes256.getMethodType();
         // test3 = aes256.METHOD_TYPE;
         String test2 = arr.getLastPair().getCryptoDict().name();
         /* decrypt 방식 테스트 */
