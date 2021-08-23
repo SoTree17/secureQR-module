@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class SecureQrCryptoArray {
     private ArrayList<MethodPair> arr;
 
-    SecureQrCryptoArray() {
+    public SecureQrCryptoArray() {
         this.arr = new ArrayList<MethodPair>();
     }
 

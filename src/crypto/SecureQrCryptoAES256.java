@@ -34,7 +34,7 @@ public class SecureQrCryptoAES256 implements SecureQrCrypto {
         return this.key;
     }
 
-    SecureQrCryptoAES256() {
+    public SecureQrCryptoAES256() {
         setKey(RandomString.getString(32));
     }
 
