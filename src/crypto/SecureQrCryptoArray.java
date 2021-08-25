@@ -1,6 +1,5 @@
 package crypto;
 
-import qr_util.CryptoDict;
 import qr_util.MethodPair;
 import java.util.ArrayList;
 
@@ -18,11 +17,6 @@ public class SecureQrCryptoArray {
 
     public void add(SecureQrHash _h, SecureQrCrypto _c) {
         arr.add(new MethodPair(_h, _c));
-    }
-
-    // 메소드 오버로딩
-    public void add(SecureQrHash _h, SecureQrCrypto _c, CryptoDict _d) {
-        arr.add(new MethodPair(_h, _c, _d));
     }
 
     public SecureQrHash getHash(int index) {

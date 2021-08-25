@@ -11,7 +11,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Reader implements ReadSecureQR {
-
     @Override
     public String readSecureQRCode(File qrCodeImage) throws IOException {
         try {
