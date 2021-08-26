@@ -46,7 +46,7 @@ public class Generator implements Generatable {
     }
 
     @Override
-    public boolean createSecureQRImage(byte[] qr_byte_arr, int off, String path){
+    public boolean createSecureQRImage(byte[] qr_byte_arr, int off, String path) {
         boolean status;
         try {
             FileImageOutputStream imageOutput = new FileImageOutputStream(new File(path));

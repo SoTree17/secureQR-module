@@ -1,6 +1,7 @@
 package qr.generating;
 
 import crypto.SecureQrCryptoArray;
+
 import java.io.IOException;
 
 public interface Generatable {

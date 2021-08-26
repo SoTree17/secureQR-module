@@ -8,4 +8,6 @@ public interface Readable {
 
     String readSecureQRCode(String filepath) throws IOException;
 
+    // readSecureQRCode(Byte[] qrCodeBytes) throws IOException;
+
 }
