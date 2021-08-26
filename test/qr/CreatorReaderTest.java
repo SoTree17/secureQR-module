@@ -6,10 +6,10 @@ import crypto.SecureQrCryptoAES256;
 import crypto.SecureQrCryptoArray;
 import crypto.SecureQrHashMD5;
 import junit.framework.TestCase;
-import qr.creation.CreateSecureQR;
-import qr.creation.Creator;
+import qr.generating.Generatable;
+import qr.generating.Generator;
 import qr.reading.Reader;
-import qr.reading.ReadSecureQR;
+import qr.reading.Readable;
 
 import javax.imageio.stream.FileImageOutputStream;
 import java.io.File;
@@ -17,8 +17,8 @@ import java.io.File;
 public class CreatorReaderTest extends TestCase {
 
     public void testCreateSecureQRCode() throws Exception {
-        CreateSecureQR app = new Creator();
-        ReadSecureQR read = new Reader();
+        Generatable app = new Generator();
+        Readable read = new Reader();
         SecureQrCryptoArray arr = new SecureQrCryptoArray();
         arr.add(new SecureQrHashMD5(), new SecureQrCryptoAES256());
 

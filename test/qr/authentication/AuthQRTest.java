@@ -13,6 +13,7 @@ import java.security.NoSuchAlgorithmException;
 public class AuthQRTest extends TestCase {
 
     public void testIsSecureQR() throws Exception {
+        /* ArrayList for Crypto Instance */
         SecureQrCryptoArray arr = new SecureQrCryptoArray();
         arr.add(new SecureQrHashMD5(), new SecureQrCryptoAES256());
 
@@ -20,6 +21,7 @@ public class AuthQRTest extends TestCase {
         String data = "https://github.com/SoTree17";
         int index = 0;
 
+        /* convert into JsonObject */
         JsonObject obj = new JsonObject();
         String hash_value = arr.getHash(index).hashing(data);
         String data_hash = data + ";;" + hash_value;

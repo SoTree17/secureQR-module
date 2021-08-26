@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class Reader implements ReadSecureQR {
+public class Reader implements Readable {
     @Override
     public String readSecureQRCode(File qrCodeImage) throws IOException {
         try {

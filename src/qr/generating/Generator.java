@@ -1,4 +1,4 @@
-package qr.creation;
+package qr.generating;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -8,10 +8,12 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import crypto.SecureQrCryptoArray;
 
+import javax.imageio.stream.FileImageOutputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 
-public class Creator implements CreateSecureQR {
+public class Generator implements Generatable {
 
     @Override
     public byte[] createSecureQRCode(SecureQrCryptoArray arr, String authUrl, String data, int index, int width, int height) throws IOException {
@@ -29,6 +31,7 @@ public class Creator implements CreateSecureQR {
 
             String serialized_data = new Gson().toJson(obj);
 
+            /* Generating QR Code */
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
             BitMatrix bitMatrix = qrCodeWriter.encode(serialized_data, BarcodeFormat.QR_CODE, width, height);
 
@@ -40,5 +43,20 @@ public class Creator implements CreateSecureQR {
             e.printStackTrace();
             throw new IOException(e);
         }
+    }
+
+    @Override
+    public boolean createSecureQRImage(byte[] qr_byte_arr, int off, String path){
+        boolean status;
+        try {
+            FileImageOutputStream imageOutput = new FileImageOutputStream(new File(path));
+            imageOutput.write(qr_byte_arr, off, qr_byte_arr.length);
+            imageOutput.close();
+            status = true;
+        } catch (Exception e) {
+            status = false;
+            e.printStackTrace();
+        }
+        return status;
     }
 }
