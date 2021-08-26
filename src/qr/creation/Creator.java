@@ -23,7 +23,6 @@ public class Creator implements CreateSecureQR {
 
             String requestUrl = authUrl + encrypted_data;
 
-
             obj.addProperty("requestUrl", requestUrl);
             obj.addProperty("index", index);
             obj.addProperty("test", encrypted_data); // 임시 테스트 용
