@@ -1,5 +1,6 @@
 package crypto;
 
+import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.util.Base64;
 import javax.crypto.Cipher;
@@ -17,7 +18,7 @@ public class SecureQrCryptoRSA implements SecureQrCrypto {
     /**
      * 생성자에서 RSA 키 쌍 생성
      */
-    SecureQrCryptoRSA() throws NoSuchAlgorithmException {
+    public SecureQrCryptoRSA() throws NoSuchAlgorithmException {
         SecureRandom secureRandom = new SecureRandom();
         KeyPairGenerator gen;
         gen = KeyPairGenerator.getInstance("RSA");
@@ -52,6 +53,6 @@ public class SecureQrCryptoRSA implements SecureQrCrypto {
         cipher.init(Cipher.DECRYPT_MODE, this.privateKey);
         byte[] bytePlain = cipher.doFinal(byteEncrypted);
 
-        return new String(bytePlain, "utf-8");
+        return new String(bytePlain, StandardCharsets.UTF_8);
     }
 }

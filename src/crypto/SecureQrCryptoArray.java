@@ -8,7 +8,7 @@ public class SecureQrCryptoArray {
     private ArrayList<MethodPair> arr;
 
     public SecureQrCryptoArray() {
-        this.arr = new ArrayList<MethodPair>();
+        this.arr = new ArrayList<>();
     }
 
     public int size() {
