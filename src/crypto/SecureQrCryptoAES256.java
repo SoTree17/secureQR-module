@@ -14,7 +14,7 @@ public class SecureQrCryptoAES256 implements SecureQrCrypto {
     public String getMethodType() { return METHOD_TYPE; }
 
     public static String alg = "AES/CBC/PKCS5Padding"; //해당 문자열로부터, Chiper 객체 생성시, AES 암호화, ECB Operation mode, PKCS5 padding Scheme 으로 초기화하라고 요청
-    private String key = "00000000000000000000000000000000000";
+    private String key = "00000000000000000000000000000000";
     private String iv = key.substring(0, 16);
 
     public void setKey(String _key) {

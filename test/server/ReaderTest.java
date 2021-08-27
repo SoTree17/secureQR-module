@@ -15,7 +15,11 @@ public class ReaderTest extends TestCase {
 
     public void testFileImageReader() throws Exception{
         SecureQrCryptoArray arr = new SecureQrCryptoArray();
-        arr.add(new SecureQrHashMD5(), new SecureQrCryptoAES256());
+
+        SecureQrCryptoAES256 aes256 = new SecureQrCryptoAES256();
+        aes256.setKey("00000000000000000000000000000000");
+
+        arr.add(new SecureQrHashMD5(), aes256);
 
         Readable read = new Reader();
         /* suppose File is given as a parameter */

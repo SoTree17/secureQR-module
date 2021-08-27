@@ -16,7 +16,11 @@ public class GeneratorTest extends TestCase {
         /* ArrayList for Crypto Instance */
         SecureQrCryptoArray arr = new SecureQrCryptoArray();    // Controller에 @Autowired 어노테이션과 함께 인스턴스 멤버로 선언
         Generator gen = new Generator();
-        arr.add(new SecureQrHashMD5(), new SecureQrCryptoAES256()); // 신규 QR 생성 요청시
+
+        SecureQrCryptoAES256 aes256 = new SecureQrCryptoAES256();
+        aes256.setKey("00000000000000000000000000000000");
+
+        arr.add(new SecureQrHashMD5(), aes256); // 신규 QR 생성 요청시
 
 
         /* QR 이미지 생성을 위해 요청한 데이터 */
