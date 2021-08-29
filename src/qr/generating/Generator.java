@@ -23,11 +23,9 @@ public class Generator implements Generatable {
             String data_hash = data + ";;" + hash_value;
             String encrypted_data = arr.getCrypto(index).encrypt(data_hash);
 
-            String requestUrl = authUrl + encrypted_data;
-
-            obj.addProperty("requestUrl", requestUrl);
+            obj.addProperty("requestURL", authUrl);
             obj.addProperty("index", index);
-            obj.addProperty("test", encrypted_data); // 임시 테스트 용
+            obj.addProperty("data", encrypted_data);
 
             String serialized_data = new Gson().toJson(obj);
 

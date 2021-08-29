@@ -35,16 +35,19 @@ public class AuthQR {
         try {
             JsonObject obj = new Gson().fromJson(read_data, JsonObject.class);
             int index = obj.get("index").getAsInt();
-            String requestUrl = obj.get("requestUrl").getAsString();
+            String requestUrl = obj.get("requestURL").getAsString();
+            String data = obj.get("data").getAsString();
 
             return true;
         }
         catch (JsonSyntaxException e) {
             System.out.println("올바르지 않은 Json 문법");
+            e.printStackTrace();
             return false;
         }
         catch (NullPointerException e) {
             System.out.println("SecureQR과 맞지 않는 속성 값");
+            e.printStackTrace();
             return false;
         }
     }

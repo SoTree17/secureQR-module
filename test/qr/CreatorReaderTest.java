@@ -40,7 +40,7 @@ public class CreatorReaderTest extends TestCase {
         // json 값 읽기
         JsonObject obj = new Gson().fromJson(result, JsonObject.class);
         int index = obj.get("index").getAsInt();
-        String encrypted = obj.get("test").getAsString();
+        String encrypted = obj.get("data").getAsString();
 
         // 암호화된 데이터 복호화
         String decrypted = arr.getCrypto(index).decrypt(encrypted);
