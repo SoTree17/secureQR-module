@@ -19,22 +19,24 @@ public class AuthQRTest extends TestCase {
 
         String authUrl = "~~myserver.com/";
         String data = "https://github.com/SoTree17";
-        int index = 0;
+        int c_index = 0;
+        int d_index = arr.addData(data);
 
         /* convert into JsonObject */
         JsonObject obj = new JsonObject();
-        String hash_value = arr.getHash(index).hashing(data);
+        String hash_value = arr.getHash(c_index).hashing(data);
         String data_hash = data + ";;" + hash_value;
-        String encrypted_data = arr.getCrypto(index).encrypt(data_hash);
+        String encrypted_data = arr.getCrypto(c_index).encrypt(data_hash);
 
         obj.addProperty("requestURL", authUrl);
-        obj.addProperty("index", index);
-        obj.addProperty("data", encrypted_data); // 임시 테스트 용
+        obj.addProperty("c_index", c_index);
+        obj.addProperty("d_index", d_index);
+        obj.addProperty("data", encrypted_data);
 
         String serialized_data = new Gson().toJson(obj);
 
-        AuthQR authQR = new AuthQR(arr, authUrl, data);
-        boolean a = authQR.isSecureQR(serialized_data);
+        AuthQR authQR = new AuthQR(arr);
+        boolean a = AuthQR.isSecureQR(serialized_data);
         assertTrue(a);
     }
 
@@ -42,31 +44,31 @@ public class AuthQRTest extends TestCase {
         SecureQrCryptoArray arr = new SecureQrCryptoArray();
         arr.add(new SecureQrHashMD5(), new SecureQrCryptoAES256());
 
-        String authUrl = "~~myserver.com/";
         String data = "https://github.com/SoTree17";
-        int index = 0;
+        int c_index = 0;
+        int d_index = arr.addData(data);
 
-        String hash_value = arr.getHash(index).hashing(data);
+        String hash_value = arr.getHash(c_index).hashing(data);
         String data_hash = data + ";;" + hash_value;
 
-        String encrypted = arr.getCrypto(index).encrypt(data_hash);
+        String encrypted = arr.getCrypto(c_index).encrypt(data_hash);
 
-        AuthQR authQR = new AuthQR(arr, authUrl, data);
+        AuthQR authQR = new AuthQR(arr);
 
 
-        String normalCase = authQR.getOriginData(encrypted, index);
+        String normalCase = authQR.getOriginData(encrypted, c_index, d_index);
         assertEquals(normalCase, data);
 
 
-        encrypted = arr.getCrypto(index).encrypt("asdf");
-        String dataError = authQR.getOriginData(encrypted, index);
+        encrypted = arr.getCrypto(c_index).encrypt("asdf");
+        String dataError = authQR.getOriginData(encrypted, c_index, d_index);
         assertEquals(dataError, AuthQR.DATA_ERROR);
 
 
         hash_value = "asdf";
         data_hash = data + ";;" + hash_value;
-        encrypted = arr.getCrypto(index).encrypt(data_hash);
-        String hashError = authQR.getOriginData(encrypted, index);
+        encrypted = arr.getCrypto(c_index).encrypt(data_hash);
+        String hashError = authQR.getOriginData(encrypted, c_index, d_index);
         assertEquals(hashError, AuthQR.HASH_ERROR);
     }
 }

@@ -6,8 +6,6 @@ import com.google.gson.JsonSyntaxException;
 import crypto.SecureQrCryptoArray;
 
 public class AuthQR {
-    public String authUrl;
-    public String data;
     public SecureQrCryptoArray arr;
 
     public final static String DATA_ERROR = "원본 데이터와 다름";
@@ -17,13 +15,9 @@ public class AuthQR {
      * SecureQR 코드 인증에 필요한 값 초기화
      *
      * @param arr 암호화 배열
-     * @param authUrl 원본 authUrl
-     * @param data 원본 data
      */
-    public AuthQR(SecureQrCryptoArray arr, String authUrl, String data) {
+    public AuthQR(SecureQrCryptoArray arr) {
         this.arr = arr;
-        this.authUrl = authUrl;
-        this.data = data;
     }
 
     /**
@@ -34,8 +28,8 @@ public class AuthQR {
     public static boolean isSecureQR(String read_data) {
         try {
             JsonObject obj = new Gson().fromJson(read_data, JsonObject.class);
-            int index = obj.get("index").getAsInt();
-            String requestUrl = obj.get("requestURL").getAsString();
+            int c_index = obj.get("c_index").getAsInt();
+            int d_index = obj.get("d_index").getAsInt();
             String data = obj.get("data").getAsString();
 
             return true;
@@ -55,11 +49,13 @@ public class AuthQR {
     /**
      * 암호화 된 데이터를 복호화 시킨 값이 원본 데이터와 같다면 원본 데이터를 반환하는 함수
      * @param encrypted 서버로 넘어오는 암호화 된 값
-     * @param index SecureQR 에 있는 인덱스 값
+     * @param c_index 암호화 인덱스값
+     * @param d_index 데이터 인덱스값
      * @return 원본 데이터 String 또는 에러 String
      */
-    public String getOriginData(String encrypted, int index) throws Exception {
-        String decrypted = arr.getCrypto(index).decrypt(encrypted);
+    public String getOriginData(String encrypted, int c_index, int d_index) throws Exception {
+        String data = arr.getData(d_index);
+        String decrypted = arr.getCrypto(c_index).decrypt(encrypted);
         String[] splitDecrypted = decrypted.split(";;");
 
         if(splitDecrypted.length != 2) {
@@ -69,10 +65,10 @@ public class AuthQR {
         String originData = splitDecrypted[0];
         String hashData = splitDecrypted[1];
 
-        if(!originData.equals(this.data)) {
+        if(!originData.equals(data)) {
             return DATA_ERROR;
         }
-        if(!hashData.equals(arr.getHash(index).hashing(data))) {
+        if(!hashData.equals(arr.getHash(c_index).hashing(data))) {
             return HASH_ERROR;
         }
         return originData;

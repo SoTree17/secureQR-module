@@ -26,12 +26,13 @@ public class GeneratorTest extends TestCase {
         /* QR 이미지 생성을 위해 요청한 데이터 */
         String authUrl = "https://secureQR.com//v1//secureQR//";
         String data = "https://github.com//SoTree17";
-        int index = 0;
+        int c_index = 0;
+        int d_index = arr.addData(data);
         int width = 200;
         int height = 200;
 
         /* Generator 호출 */
-        byte[] result = gen.createSecureQRCode(arr, authUrl, data, index, width, height);
+        byte[] result = gen.createSecureQRCode(arr, authUrl, c_index, d_index, width, height);
 
         /* 이미지 지정된 path 로 성공적으로 저장했다면 true */
         assertTrue(gen.createSecureQRImage(result, 0, "testImg.png"));

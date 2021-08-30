@@ -25,8 +25,11 @@ public class CreatorReaderTest extends TestCase {
         String authUrl = "~~myserver.com/";
         String data = "https://github.com/SoTree17";
 
+        int c_index = 0;
+        int d_index = arr.addData(data);
+
         // qr코드 생성
-        byte[] qr_byte_arr = app.createSecureQRCode(arr, authUrl, data, 0, 256, 256);
+        byte[] qr_byte_arr = app.createSecureQRCode(arr, authUrl, c_index, d_index, 256, 256);
 
         // qr코드를 읽어서 값이 맞는지 확인
         FileImageOutputStream imageOutput = new FileImageOutputStream(new File("image.png"));
@@ -39,11 +42,12 @@ public class CreatorReaderTest extends TestCase {
 
         // json 값 읽기
         JsonObject obj = new Gson().fromJson(result, JsonObject.class);
-        int index = obj.get("index").getAsInt();
+        int read_c_index = obj.get("c_index").getAsInt();
+        int read_d_index = obj.get("d_index").getAsInt();
         String encrypted = obj.get("data").getAsString();
 
         // 암호화된 데이터 복호화
-        String decrypted = arr.getCrypto(index).decrypt(encrypted);
+        String decrypted = arr.getCrypto(read_c_index).decrypt(encrypted);
         System.out.println("암호화 복호화 된 값 : ");
         System.out.println(encrypted);
         System.out.println(decrypted);
@@ -56,8 +60,8 @@ public class CreatorReaderTest extends TestCase {
         System.out.println(hashUrl);
 
         // 원본 데이터 - QR 복호화 데이터 비교
-        assertEquals(data, originUrl);
+        assertEquals(arr.getData(read_d_index), originUrl);
         // 원본 데이터 해쉬 값 - QR 해쉬 값 비교
-        assertEquals(hashUrl, arr.getHash(index).hashing(data));
+        assertEquals(hashUrl, arr.getHash(read_c_index).hashing(data));
     }
 }

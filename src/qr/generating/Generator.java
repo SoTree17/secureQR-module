@@ -16,15 +16,17 @@ import java.io.IOException;
 public class Generator implements Generatable {
 
     @Override
-    public byte[] createSecureQRCode(SecureQrCryptoArray arr, String authUrl, String data, int index, int width, int height) throws IOException {
+    public byte[] createSecureQRCode(SecureQrCryptoArray arr, String authUrl, int c_index, int d_index, int width, int height) throws IOException {
         try {
             JsonObject obj = new JsonObject();
-            String hash_value = arr.getHash(index).hashing(data);
+            String data = arr.getData(d_index);
+            String hash_value = arr.getHash(c_index).hashing(data);
             String data_hash = data + ";;" + hash_value;
-            String encrypted_data = arr.getCrypto(index).encrypt(data_hash);
+            String encrypted_data = arr.getCrypto(c_index).encrypt(data_hash);
 
             obj.addProperty("requestURL", authUrl);
-            obj.addProperty("index", index);
+            obj.addProperty("c_index", c_index);
+            obj.addProperty("d_index", d_index);
             obj.addProperty("data", encrypted_data);
 
             String serialized_data = new Gson().toJson(obj);
