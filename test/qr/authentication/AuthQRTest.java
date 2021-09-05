@@ -5,10 +5,7 @@ import com.google.gson.JsonObject;
 import crypto.SecureQrCryptoAES256;
 import crypto.SecureQrCryptoArray;
 import crypto.SecureQrHashMD5;
-import crypto.SecureQrHashSHA256;
 import junit.framework.TestCase;
-
-import java.security.NoSuchAlgorithmException;
 
 public class AuthQRTest extends TestCase {
 

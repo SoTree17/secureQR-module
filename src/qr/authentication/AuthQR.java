@@ -10,6 +10,7 @@ public class AuthQR {
 
     public final static String DATA_ERROR = "원본 데이터와 다름";
     public final static String HASH_ERROR = "해시 값이 다름";
+    public final static String DECRYPT_ERROR = "복호화 실패";
 
     /**
      * SecureQR 코드 인증에 필요한 값 초기화
@@ -55,7 +56,13 @@ public class AuthQR {
      */
     public String getOriginData(String encrypted, int c_index, int d_index) throws Exception {
         String data = arr.getData(d_index);
-        String decrypted = arr.getCrypto(c_index).decrypt(encrypted);
+        String decrypted;
+        try {
+            decrypted = arr.getCrypto(c_index).decrypt(encrypted);
+        }
+        catch (Exception e) {
+            return DECRYPT_ERROR;
+        }
         String[] splitDecrypted = decrypted.split(";;");
 
         if(splitDecrypted.length != 2) {
