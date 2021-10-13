@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group 'org.sotree'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+    implementation 'com.google.zxing:javase:3.4.1'
+    implementation 'com.google.zxing:core:3.4.1'
+    implementation 'com.google.code.gson:gson:2.8.8'
+    implementation 'junit:junit:4.13.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
