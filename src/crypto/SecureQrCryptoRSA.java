@@ -20,11 +20,11 @@ public class SecureQrCryptoRSA implements SecureQrCrypto {
      */
     public SecureQrCryptoRSA() throws NoSuchAlgorithmException {
         SecureRandom secureRandom = new SecureRandom();
-        KeyPairGenerator gen;
-        gen = KeyPairGenerator.getInstance("RSA");
-        gen.initialize(1024, secureRandom);
+        KeyPairGenerator keyGen;
+        keyGen = KeyPairGenerator.getInstance("RSA");
+        keyGen.initialize(1024, secureRandom);
 
-        KeyPair keyPair = gen.genKeyPair();
+        KeyPair keyPair = keyGen.genKeyPair();
 
         this.publicKey = keyPair.getPublic();
         this.privateKey = keyPair.getPrivate();
@@ -37,9 +37,9 @@ public class SecureQrCryptoRSA implements SecureQrCrypto {
     public String encrypt(String message) throws Exception {
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.ENCRYPT_MODE, this.publicKey);
-        byte[] bytePlain = cipher.doFinal(message.getBytes());
+        byte[] encryptedMessage = cipher.doFinal(message.getBytes());
 
-        return Base64.getEncoder().encodeToString(bytePlain);
+        return Base64.getEncoder().encodeToString(encryptedMessage);
     }
 
 
@@ -51,8 +51,8 @@ public class SecureQrCryptoRSA implements SecureQrCrypto {
         Cipher cipher = Cipher.getInstance("RSA");
         byte[] byteEncrypted = Base64.getDecoder().decode(message.getBytes());
         cipher.init(Cipher.DECRYPT_MODE, this.privateKey);
-        byte[] bytePlain = cipher.doFinal(byteEncrypted);
+        byte[] decryptedMessage = cipher.doFinal(byteEncrypted);
 
-        return new String(bytePlain, StandardCharsets.UTF_8);
+        return new String(decryptedMessage, StandardCharsets.UTF_8);
     }
 }

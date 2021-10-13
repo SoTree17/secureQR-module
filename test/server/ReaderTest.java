@@ -41,8 +41,8 @@ public class ReaderTest extends TestCase {
         String originUrl = splitDecrypted[0];
         String hash_value = splitDecrypted[1];
 
-        System.out.println(originUrl);
-        System.out.println(hash_value);
+        // System.out.println(originUrl);
+        // System.out.println(hash_value);
 
         assertNotNull(originUrl);
         assertNotNull(hash_value);

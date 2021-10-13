@@ -14,12 +14,22 @@ import java.io.File;
 import java.io.IOException;
 
 public class Generator implements Generatable {
-
+    
+    /**
+     * 보안 QR코드 생성 함수
+     * @param arr       사용할 해시, 암호화, 데이터가 저장되어있는 SecureQrCryptoArray
+     * @param authUrl   보안 QR 코드 인증에 사용할 URL
+     * @param c_index   사용할 해시, 암호화의 index
+     * @param d_index   사용할 데이터의 index
+     * @param width     QR 코드 크기 조절
+     * @param height    QR 코드 크기 조절
+     * @return 보안 QR의 byte array
+     */
     @Override
     public byte[] createSecureQRCode(SecureQrCryptoArray arr, String authUrl, int c_index, int d_index, int width, int height) throws IOException {
+        JsonObject obj = new JsonObject();
+        String data = arr.getData(d_index);
         try {
-            JsonObject obj = new JsonObject();
-            String data = arr.getData(d_index);
             String hash_value = arr.getHash(c_index).hashing(data);
             String data_hash = data + ";;" + hash_value;
             String encrypted_data = arr.getCrypto(c_index).encrypt(data_hash);
@@ -37,7 +47,7 @@ public class Generator implements Generatable {
 
             ByteArrayOutputStream byteArrayStream = new ByteArrayOutputStream();
             MatrixToImageWriter.writeToStream(bitMatrix, "PNG", byteArrayStream);
-            // to byte array
+            /* to byte array */
             return byteArrayStream.toByteArray();
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,6 +55,13 @@ public class Generator implements Generatable {
         }
     }
 
+    /**
+     * byte arrary 를 이미지 파일로 저장하는 함수
+     * @param qr_byte_arr QR 코드의 byte array
+     * @param off 시작 오프셋
+     * @param path 저장 경로
+     * @return 이미지 생성 성공 여부
+     */
     @Override
     public boolean createSecureQRImage(byte[] qr_byte_arr, int off, String path) {
         boolean status;

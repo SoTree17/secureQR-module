@@ -37,8 +37,8 @@ public class CreatorReaderTest extends TestCase {
         imageOutput.close();
 
         String result = read.readSecureQRCode("image.png");
-        System.out.println("QR 코드 값 : ");
-        System.out.println(result);
+        // System.out.println("QR 코드 값 : ");
+        // System.out.println(result);
 
         // json 값 읽기
         JsonObject obj = new Gson().fromJson(result, JsonObject.class);
@@ -48,16 +48,16 @@ public class CreatorReaderTest extends TestCase {
 
         // 암호화된 데이터 복호화
         String decrypted = arr.getCrypto(read_c_index).decrypt(encrypted);
-        System.out.println("암호화 복호화 된 값 : ");
-        System.out.println(encrypted);
-        System.out.println(decrypted);
+        // System.out.println("암호화 복호화 된 값 : ");
+        // System.out.println(encrypted);
+        // System.out.println(decrypted);
         String[] splitDecrypted = decrypted.split(";;");
 
         String originUrl = splitDecrypted[0];
         String hashUrl = splitDecrypted[1];
-        System.out.println("원본 URL, URL 해시 값 : ");
-        System.out.println(originUrl);
-        System.out.println(hashUrl);
+        // System.out.println("원본 URL, URL 해시 값 : ");
+        // System.out.println(originUrl);
+        // System.out.println(hashUrl);
 
         // 원본 데이터 - QR 복호화 데이터 비교
         assertEquals(arr.getData(read_d_index), originUrl);

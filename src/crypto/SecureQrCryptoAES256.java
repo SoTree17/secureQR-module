@@ -11,11 +11,11 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class SecureQrCryptoAES256 implements SecureQrCrypto {
     public static final String METHOD_TYPE = "AES256";
-    // public final String Method_TYPE = "AES256";
+    
     @Override
     public String getMethodType() { return METHOD_TYPE; }
-
-    public static String alg = "AES/CBC/PKCS5Padding"; //해당 문자열로부터, Chiper 객체 생성시, AES 암호화, ECB Operation mode, PKCS5 padding Scheme 으로 초기화하라고 요청
+    
+    public static String algorithm = "AES/CBC/PKCS5Padding";
     private String key = "00000000000000000000000000000000";
     private String iv = key.substring(0, 16);
 
@@ -36,30 +36,33 @@ public class SecureQrCryptoAES256 implements SecureQrCrypto {
         return this.key;
     }
 
+    /**
+     * 처음 생성시 랜덤한 키 값으로 초기화
+     */
     public SecureQrCryptoAES256() {
         setKey(RandomString.getString(32));
     }
 
     @Override
     public String encrypt(String message) throws Exception {
-        Cipher cipher = Cipher.getInstance(alg);
+        Cipher cipher = Cipher.getInstance(algorithm);
         SecretKeySpec keySpec = new SecretKeySpec(iv.getBytes(), "AES");
         IvParameterSpec ivParamSpec = new IvParameterSpec(iv.getBytes());
         cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivParamSpec);
 
-        byte[] encrypted = cipher.doFinal(message.getBytes(StandardCharsets.UTF_8));
-        return Base64.getEncoder().encodeToString(encrypted);
+        byte[] encryptedMessage = cipher.doFinal(message.getBytes(StandardCharsets.UTF_8));
+        return Base64.getEncoder().encodeToString(encryptedMessage);
     }
 
     @Override
     public String decrypt(String message) throws Exception {
-        Cipher cipher = Cipher.getInstance(alg);
+        Cipher cipher = Cipher.getInstance(algorithm);
         SecretKeySpec keySpec = new SecretKeySpec(iv.getBytes(), "AES");
         IvParameterSpec ivParamSpec = new IvParameterSpec(iv.getBytes());
         cipher.init(Cipher.DECRYPT_MODE, keySpec, ivParamSpec);
 
         byte[] decodedBytes = Base64.getDecoder().decode(message);
-        byte[] decrypted = cipher.doFinal(decodedBytes);
-        return new String(decrypted, StandardCharsets.UTF_8);
+        byte[] decryptedMessage = cipher.doFinal(decodedBytes);
+        return new String(decryptedMessage, StandardCharsets.UTF_8);
     }
 }

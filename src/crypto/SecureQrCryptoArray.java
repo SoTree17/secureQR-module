@@ -3,8 +3,12 @@ package crypto;
 import qr_util.MethodPair;
 import java.util.ArrayList;
 
-
 public class SecureQrCryptoArray {
+    /**
+     * 해시, 암호화 방식과 데이터를 저장하는 배열
+     * crypto_arr 에 해시, 암호화 방식이 저장된다.
+     * data_arr 에 데이터가 저장된다.
+     */
     private ArrayList<MethodPair> crypto_arr;
     private ArrayList<String> data_arr;
 
@@ -21,6 +25,11 @@ public class SecureQrCryptoArray {
         return data_arr.size();
     }
 
+    /**
+     * 해시, 암호화 방식 추가
+     * @param _h 해시 방식
+     * @param _c 암호화 방식
+     */
     public void add(SecureQrHash _h, SecureQrCrypto _c) {
         crypto_arr.add(new MethodPair(_h, _c));
     }

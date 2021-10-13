@@ -14,7 +14,6 @@ public class AuthQR {
 
     /**
      * SecureQR 코드 인증에 필요한 값 초기화
-     *
      * @param arr 암호화 배열
      */
     public AuthQR(SecureQrCryptoArray arr) {
