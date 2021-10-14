@@ -10,7 +10,6 @@ import qr.generating.Generator;
 
 
 public class GeneratorTest extends TestCase {
-
     /* QR 이미지 생성 요청시 생성 후 반환 테스트*/
     public void testingGenerator() throws Exception {
         /* ArrayList for Crypto Instance */
