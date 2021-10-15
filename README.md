@@ -5,10 +5,18 @@ SecureQR is an open source, QR code forgery prevention library that can be used 
 ### Download
 Download [JAR file](https://github.com/SoTree17/secureQR-module/releases) from the github release tab
 ## Usage
+### crypto
+
+### qr_util
+
+### qr
+
 ## How to SecureQR Works?
 
 
-## Build 
+## Build
+This project can be built with gradle.   
+If you run <code>jar</code> among gradle tasks, you can find the compiled jar file in <code>/build/secureQR-module-x.y.z.jar</code>
 ### dependency
 * zxing:core
 * zxing:javase
