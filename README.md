@@ -16,7 +16,8 @@ Download [JAR file](https://github.com/SoTree17/secureQR-module/releases) from t
 
 ## Build
 This project can be built with gradle.   
-If you run <code>jar</code> among gradle tasks, you can find the compiled jar file in <code>/build/secureQR-module-x.y.z.jar</code>
+If you run <code>jar</code> among gradle tasks, you can find the compiled jar file in <code>/build/libs/secureQR-module-x.y.z.jar</code>
+
 ### dependency
 * zxing:core
 * zxing:javase
