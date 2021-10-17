@@ -7,7 +7,7 @@ You can use SecureQR by adding the JAR file as an external library to your Java 
 Download [JAR file](https://github.com/SoTree17/secureQR-module/releases) from the github release tab
 ## Usage
 ### crypto
- * <b>Interface SecureQrCrypto</b>  
+ > <b>Interface SecureQrCrypto</b>  
 By implementing the SecureQrCrypto interface, you can use custom cryptographic objects with secureQR.
 
 |Type|Method|Description|  
@@ -16,19 +16,38 @@ By implementing the SecureQrCrypto interface, you can use custom cryptographic o
 |String|getMethodType()|Returns the encryption method as a string.|
 |String|encrypt(String message)|Returns a string encrypted message.|
 |String|decrypt(String message)|Returns a string that decrypts the message.|
-  
-   
- * <b>Interface SecureQrHash</b>    
+<br>
+
+ > <b>Interface SecureQrHash</b>      
  By implementing the SecureQrHash interface, you can use custom hash functions with secureQR.  
  
- |Type|Method|Description|  
+  |Type|Method|Description|  
 |----|------|-----------|
 |String|getInstanceType()|Returns the type of the current instance as a string. If it is a hash object, it returns "Hash".|
 |String|getMethodType()|Returns the hash function method as a string.|
 |String|hashing(String message)|Returns hashed message.|
+<br>
 
 ### qr_util
-TODO
+> <b>class MethodPair</b>    
+A pair of hash objects and cryptographic objects.  
+ 
+ |Type|Method|Description|  
+|----|------|-----------|
+|Constructor|MethodPair(SecureQrHash _h, SecureQrCrypto _c)|Initialize MethodPair with parameters.|
+|SecureQrCrypto|getCrypto()|Returns the stored cryptographic object.|
+|SecureQrHash|getHash()|Returnsthe stored hash object.|
+
+<br>
+
+ > <b>class RandomString</b>       
+A class that generates a random string.
+
+|Type|Method|Description|  
+|----|------|-----------|
+|String|getString(int length)|Returns a random string of arbitrary length.|   
+<br>
+
 ### qr
 TODO
 
