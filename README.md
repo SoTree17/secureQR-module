@@ -16,7 +16,16 @@ By implementing the SecureQrCrypto interface, you can use custom cryptographic o
 |String|getMethodType()|Returns the encryption method as a string.|
 |String|encrypt(String message)|Returns a string encrypted message.|
 |String|decrypt(String message)|Returns a string that decrypts the message.|
-
+  
+   
+ * <b>Interface SecureQrHash</b>    
+ By implementing the SecureQrHash interface, you can use custom hash functions with secureQR.  
+ 
+ |Type|Method|Description|  
+|----|------|-----------|
+|String|getInstanceType()|Returns the type of the current instance as a string. If it is a hash object, it returns "Hash".|
+|String|getMethodType()|Returns the hash function method as a string.|
+|String|hashing(String message)|Returns hashed message.|
 
 ### qr_util
 TODO
