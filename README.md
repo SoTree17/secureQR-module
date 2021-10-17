@@ -2,11 +2,22 @@
 SecureQR is an open source, QR code forgery prevention library that can be used in a Java-based server.
 
 # Get Started
+You can use SecureQR by adding the JAR file as an external library to your Java project.
 ## Download
 Download [JAR file](https://github.com/SoTree17/secureQR-module/releases) from the github release tab
 ## Usage
 ### crypto
-TODO
+ * <b>Interface SecureQrCrypto</b>  
+By implementing the SecureQrCrypto interface, you can use custom cryptographic objects with secureQR.
+
+|Type|Method|Description|  
+|----|------|-----------|
+|String|getInstanceType()|Returns the type of the current instance as a string. If it is a cryptographic object, it returns "CRYPTO".|
+|String|getMethodType()|Returns the encryption method as a string.|
+|String|encrypt(String message)|Returns a string encrypted message.|
+|String|decrypt(String message)|Returns a string that decrypts the message.|
+
+
 ### qr_util
 TODO
 ### qr
