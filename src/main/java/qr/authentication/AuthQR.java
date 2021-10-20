@@ -8,6 +8,7 @@ import crypto.SecureQrCryptoArray;
 public class AuthQR {
     public SecureQrCryptoArray arr;
 
+    public final static String INDEX_ERROR = "인덱스 오류";
     public final static String DATA_ERROR = "원본 데이터와 다름";
     public final static String HASH_ERROR = "해시 값이 다름";
     public final static String DECRYPT_ERROR = "복호화 실패";
@@ -44,6 +45,10 @@ public class AuthQR {
             e.printStackTrace();
             return false;
         }
+        catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     /**
@@ -54,8 +59,14 @@ public class AuthQR {
      * @return 원본 데이터 String 또는 에러 String
      */
     public String getOriginData(String encrypted, int c_index, int d_index) throws Exception {
-        String data = arr.getData(d_index);
+        String data;
         String decrypted;
+
+        try {
+            data = arr.getData(d_index);
+        } catch (Exception e) {
+            return INDEX_ERROR;
+        }
         try {
             decrypted = arr.getCrypto(c_index).decrypt(encrypted);
         }

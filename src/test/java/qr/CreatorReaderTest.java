@@ -28,10 +28,10 @@ public class CreatorReaderTest extends TestCase {
         int c_index = 0;
         int d_index = arr.addData(data);
 
-        // qr코드 생성
+        // QR 코드 생성
         byte[] qr_byte_arr = app.createSecureQRCode(arr, authUrl, c_index, d_index, 256, 256);
 
-        // qr코드를 읽어서 값이 맞는지 확인
+        // QR 코드를 읽어서 값이 맞는지 확인
         FileImageOutputStream imageOutput = new FileImageOutputStream(new File("image.png"));
         imageOutput.write(qr_byte_arr, 0, qr_byte_arr.length);
         imageOutput.close();

@@ -68,4 +68,9 @@ public class AuthQRTest extends TestCase {
         String hashError = authQR.getOriginData(encrypted, c_index, d_index);
         assertEquals(hashError, AuthQR.HASH_ERROR);
     }
+    public void testWrongParameter() throws Exception{
+        SecureQrCryptoArray arr = new SecureQrCryptoArray();
+        AuthQR authQR = new AuthQR(arr);
+        authQR.getOriginData("asdf", 99, 99);
+    }
 }
