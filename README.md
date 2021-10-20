@@ -50,6 +50,7 @@ Arrays to store SecureQrHash, SecureQrCrypto and data. Hash, encryption method i
 |SecureQrCrypto|getCrypto(int index)|Get the encryption method at the index location.|
 |int|**addData(String _data)**|Add data to data_arr and return the index where the data is located. This index is required for secureQR authentication.|
 |String|getData(int index)|Get the data at index position.|
+<br>
 
 ### qr_util
 > <b>class MethodPair</b>    
@@ -72,8 +73,18 @@ A class that generates a random string.
 <br>
 
 ### qr
-TODO
+TODO generating, reading
 
+
+> <b>class AuthQR</b>    
+A pair of hash objects and cryptographic objects.  
+ 
+ |Type|Method|Description|  
+|----|------|-----------|
+|Constructor|**AuthQR(SecureQrCryptoArray arr)**|Initialize AuthQR by registering SecureQrCryptoArray to be used for secureQR authentication.|
+|boolean|isSecureQR(String read_data)|Check whether the data is the same as the data format in secureQR.|
+|String|**getOriginData(String encrypted, int c_index, int d_index)**|Decrypts the data using the encryption and hash method in c_index and checks whether the data is correct by comparing it with the data in d_index. If all checks have passed, return the original data.|
+<br>
 
 ## Build
 This project can be built with gradle.   
