@@ -37,6 +37,20 @@ By implementing the SecureQrCrypto interface, you can use custom cryptographic o
 |String|hashing(String message)|Returns hashed message.|
 <br>
 
+> <b>class SecureQrCryptoArray</b>    
+Arrays to store SecureQrHash, SecureQrCrypto and data. Hash, encryption method is stored in crypto_arr via MethodPair and data is stored in data_arr.
+ 
+ |Type|Method|Description|  
+|----|------|-----------|
+|Constructor|SecureQrCryptoArray()|Initialize crypto_arr and data_arr to an empty ArrayList.|
+|int|crypto_size()|Returns the size of crypto_arr.|
+|int|data_size()|Returns the size of data_arr.|
+|void|**add(SecureQrHash _h, SecureQrCrypto _c)**|Add hash, crypto pair to crypto_arr.|
+|SecureQrHash|getHash(int index)|Get the hash method at the index location.|
+|SecureQrCrypto|getCrypto(int index)|Get the encryption method at the index location.|
+|int|**addData(String _data)**|Add data to data_arr and return the index where the data is located. This index is required for secureQR authentication.|
+|String|getData(int index)|Get the data at index position.|
+
 ### qr_util
 > <b>class MethodPair</b>    
 A pair of hash objects and cryptographic objects.  
