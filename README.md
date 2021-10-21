@@ -95,6 +95,15 @@ If you run <code>jar</code> among gradle tasks, you can find the compiled jar fi
 * zxing:javase
 * gson
 
+## Open Source Lisence
+### Copyright
+
+|Component|Version|Homepage|License|
+|----|------|-----------|------|
+|Zxing|3.4.1|https://github.com/zxing/zxing|Apache-2.0 License|
+|Gson|2.8.8|https://github.com/google/gson|Apache-2.0 License|
+|Junit|4.13.2|https://junit.org/junit4|Eclipse Public License 1.0|
+
 ## Contribution
 ### Reporting bugs
 Bugs are tracked as [GitHub issues](https://github.com/SoTree17/secureQR-module/issues).  
