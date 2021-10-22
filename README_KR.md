@@ -50,41 +50,41 @@ SecureQrHash, SecureQrCrypto 그리고 데이터를 저장하는 배열입니다
 |Constructor|SecureQrCryptoArray()|crypto_arr 와 data_arr 를 빈 ArrayList로 초기화합니다.|
 |int|crypto_size()|crypto_arr의 이즈를 반환합니다.|
 |int|data_size()|data_arr의 사이즈를 반환합니다.|
-|void|**add(SecureQrHash _h, SecureQrCrypto _c)**|Add hash, crypto pair to crypto_arr.|
-|SecureQrHash|getHash(int index)|Get the hash method at the index location.|
-|SecureQrCrypto|getCrypto(int index)|Get the encryption method at the index location.|
-|int|**addData(String _data)**|Add data to data_arr and return the index where the data is located. This index is required for secureQR authentication.|
-|String|getData(int index)|Get the data at index position.|
+|void|**add(SecureQrHash _h, SecureQrCrypto _c)**|(해시, 암호화) 쌍을 crypto_arr에 추가합니다.|
+|SecureQrHash|getHash(int index)|index 위치에 있는 해시함수를 반환합니다.|
+|SecureQrCrypto|getCrypto(int index)|index 위치에 있는 암호화 방식을 반환합니다.|
+|int|**addData(String _data)**|데이터를 data_arr에 추가하고 그 데이터가 들어있는 index를 반환합니다. 이 index는 secureQR 인증에 필요합니다.|
+|String|getData(int index)|index 위치에 있는 데이터를 반환합니다.|
 <br>
 
 ### qr_util
 > <b>class MethodPair</b>    
-A pair of hash objects and cryptographic objects.  
+해시, 암호화 객체 쌍을 저장하는 객체입니다.  
  
  |Type|Method|Description|  
 |----|------|-----------|
-|Constructor|MethodPair(SecureQrHash _h, SecureQrCrypto _c)|Initialize MethodPair with parameters.|
-|SecureQrCrypto|getCrypto()|Returns the stored cryptographic object.|
-|SecureQrHash|getHash()|Returnsthe stored hash object.|
+|Constructor|MethodPair(SecureQrHash _h, SecureQrCrypto _c)|MethodPair를 매개변수로 초기화합니다.|
+|SecureQrCrypto|getCrypto()|저장된 암호화 객체를 반환합니다.|
+|SecureQrHash|getHash()|저장된 해시 객체를 반환합니다.|
 
 <br>
 
  > <b>class RandomString</b>       
-A class that generates a random string.
+랜덤 문자열을 생성하는 객체입니다.
 
 |Type|Method|Description|  
 |----|------|-----------|
-|String|getString(int length)|Returns a random string of arbitrary length.|   
+|String|getString(int length)|length 길이의 랜덤 문자열을 반환합니다.|   
 <br>
 
 ### qr
 > **Interface Generatable** <br/>
-> By implementing the Generatable interface, you can create secure QR code in two ways.
+> Generatable 인터페이스를 구현함으로써, 보안 QR코드를 생성할 수 있습니다.
 
 | Return Type | Method                | Params                                                       | Description                                                  |
 | ----------- | --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| byte[]      | createSecureQRcode()  | `SecureQrCryptoArray` arr : the array in which the data for encrypting is stored <br />`String `authUrl : Assigned authentication server URL <br />`int` c_index : index of Hasing method. <br />`int` d_index : index of Data stored in SecureQrCryptoArray<br />`int` width, `int` height : the size of QR image width and height | Returns byte array of image format `PNG`. <br />             |
-| boolean     | createSecureQRImage() | `byte[]` qr_byte_arr : the data which is encrypted<br /> `int` off : starting offset<br />String path : your desired file path | Save secureQR on your local drive <br />then, Returns the boolean as a result |
+| byte[]      | createSecureQRcode()  | `SecureQrCryptoArray` arr : 해시,암호화방식, 데이터가 저장된 SecureQrCryptoArray 객체입니다. <br />`String `authUrl : 보안 QR코드를 인증할 서버의 URL입니다. <br />`int` c_index : SecureQrCryptoArray에서 사용할 (암호화, 해시) 쌍이 저장된 index입니다. <br />`int` d_index : SecureQrCryptoArray에서 사용할 데이터의 index입니다. <br />`int` width, `int` height : QR 이미지의 가로, 세로 크기를 지정합니다. | 보안 QR코드 이미지에 대한 `PNG` byte array를 반환합니다. <br />             |
+| boolean     | createSecureQRImage() | `byte[]` qr_byte_arr : 보안 QR코드 이미지의 byte array 입니다.<br /> `int` off : 시작 offset (일반적으로 0)<br />String path : your desired file path | Save secureQR on your local drive <br />then, Returns the boolean as a result |
 
 
 
