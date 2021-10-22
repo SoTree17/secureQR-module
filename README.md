@@ -101,7 +101,7 @@ TODO reading
 
 
 > <b>class AuthQR</b>    
-A pair of hash objects and cryptographic objects.  
+A class that authenticates secureQR.  
  
  |Type|Method|Description|  
 |----|------|-----------|

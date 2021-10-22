@@ -102,18 +102,18 @@ TODO reading
 
 
 > <b>class AuthQR</b>    
-A pair of hash objects and cryptographic objects.  
+secureQR을 인증하는 클래스입니다. 
  
  |Type|Method|Description|  
 |----|------|-----------|
-|Constructor|**AuthQR(SecureQrCryptoArray arr)**|Initialize AuthQR by registering SecureQrCryptoArray to be used for secureQR authentication.|
-|boolean|isSecureQR(String read_data)|Check whether the data is the same as the data format in secureQR.|
-|String|**getOriginData(String encrypted, int c_index, int d_index)**|Decrypts the data using the encryption and hash method in c_index and checks whether the data is correct by comparing it with the data in d_index. If all checks have passed, return the original data.|
+|Constructor|**AuthQR(SecureQrCryptoArray arr)**|secureQR 인증에 사용될 SecureQrCryptoArray를 등록함으로써 authQR을 초기화합니다.|
+|boolean|isSecureQR(String read_data)|데이터가 secureQR의 형식과 같은지 확인합니다.|
+|String|**getOriginData(String encrypted, int c_index, int d_index)**|`SecureQrCryptoArray `의 `c_index`에 있는 해시 함수와 암호화 방식으로 `encrypted`를 복호화하고, `d_index`에 있는 데이터와 비교하여 secureQR을 인증합니다. 만약 모든 인증에 통과했다면, 원본 데이터를 반환합니다. |
 <br>
 
-## Build
-This project can be built with gradle.   
-If you run <code>jar</code> among gradle tasks, you can find the compiled jar file in <code>/build/libs/secureQR-module-x.y.z.jar</code>
+## Build 
+이 프로젝트는 Gradle로 빌드할 수 있습니다.  
+gradle tasks 중에 <code>jar</code>을 실행하면 , 컴파일 된 jar파일을 <code>/build/libs/secureQR-module-x.y.z.jar</code> 에서 찾으실 수 있습니다.
 
 ### dependency
 * zxing:core 3.4.1
