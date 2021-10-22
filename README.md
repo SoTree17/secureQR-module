@@ -1,4 +1,5 @@
 # secureQR-module
+[한국어 README](https://github.com/SoTree17/secureQR-module/blob/main/README_KR.md)    
 SecureQR is a QR code library that can prevent forgery and tampering available in Java.
 
 # Get Started
