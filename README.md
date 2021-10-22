@@ -73,7 +73,27 @@ A class that generates a random string.
 <br>
 
 ### qr
-TODO generating, reading
+> **Interface Generatable** <br/>
+> By implementing the Generatable interface, you can create secure QR code in two ways.
+
+| Return Type | Method                | Params                                                       | Description                                                  |
+| ----------- | --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| byte[]      | createSecureQRcode()  | `SecureQrCryptoArray` arr : the array in which the data for encrypting is stored <br />`String `authUrl : Assigned authentication server URL <br />`int` c_index : index of Hasing method. <br />`int` d_index : index of Data stored in SecureQrCryptoArray<br />`int` width, `int` height : the size of QR image width and height | Returns byte array of image format `PNG`. <br />             |
+| boolean     | createSecureQRImage() | `byte[]` qr_byte_arr : the data which is encrypted<br /> `int` off : starting offset<br />String path : your desired file path | Save secureQR on your local drive <br />then, Returns the boolean as a result |
+
+
+
+> **class Generator** <br/>
+> Generates an encrypted `secure QR` image with hashing method, encryption method. 
+
+| Type   | Method                                                       | Description                                                  |
+| ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| byte[] | **createSecureQRCode(SecureQrCryptoArray arr, String authUrl, int c_index, int d_index, int width, int height)** | To pass it to the server to decrypt secure QR image, it creates serialized Json form first.<br />Then, get an access to `SecureQrCryptoArray` arr with `c_index` and `d_index` to specify which data needs to be Encrypted.<br />Finally, Create QR code image, formatted PNG. <br /> Return its byte data to the caller |
+| bool   | **createSecureQRImage(byte[] qr_byte_arr, int off, String path)** | To save `secureQR` image on caller's disk,<br />it tries to save on specific file path as argument entered. <br /> Returns its success or failure |
+
+
+TODO reading
+
 
 
 > <b>class AuthQR</b>    
