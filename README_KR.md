@@ -84,17 +84,17 @@ SecureQrHash, SecureQrCrypto 그리고 데이터를 저장하는 배열입니다
 | Return Type | Method                | Params                                                       | Description                                                  |
 | ----------- | --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | byte[]      | createSecureQRcode()  | `SecureQrCryptoArray` arr : 해시,암호화방식, 데이터가 저장된 SecureQrCryptoArray 객체입니다. <br />`String `authUrl : 보안 QR코드를 인증할 서버의 URL입니다. <br />`int` c_index : SecureQrCryptoArray에서 사용할 (암호화, 해시) 쌍이 저장된 index입니다. <br />`int` d_index : SecureQrCryptoArray에서 사용할 데이터의 index입니다. <br />`int` width, `int` height : QR 이미지의 가로, 세로 크기를 지정합니다. | 보안 QR코드 이미지에 대한 `PNG` byte array를 반환합니다. <br />             |
-| boolean     | createSecureQRImage() | `byte[]` qr_byte_arr : 보안 QR코드 이미지의 byte array 입니다.<br /> `int` off : 시작 offset (일반적으로 0)<br />String path : your desired file path | Save secureQR on your local drive <br />then, Returns the boolean as a result |
+| boolean     | createSecureQRImage() | `byte[]` qr_byte_arr : 보안 QR코드 이미지의 byte array 입니다.<br /> `int` off : 시작 offset (일반적으로 0)<br />String path : 이미지를 저장할 경로 | 보안 QR 코드를 저장하고, 성공했으면 True, 아니면 False를 반환합니다. |
 
 
 
 > **class Generator** <br/>
-> Generates an encrypted `secure QR` image with hashing method, encryption method. 
+> 보안 QR코드를 생성하는 클래스 입니다.
 
 | Type   | Method                                                       | Description                                                  |
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| byte[] | **createSecureQRCode(SecureQrCryptoArray arr, String authUrl, int c_index, int d_index, int width, int height)** | To pass it to the server to decrypt secure QR image, it creates serialized Json form first.<br />Then, get an access to `SecureQrCryptoArray` arr with `c_index` and `d_index` to specify which data needs to be Encrypted.<br />Finally, Create QR code image, formatted PNG. <br /> Return its byte data to the caller |
-| bool   | **createSecureQRImage(byte[] qr_byte_arr, int off, String path)** | To save `secureQR` image on caller's disk,<br />it tries to save on specific file path as argument entered. <br /> Returns its success or failure |
+| byte[] | **createSecureQRCode(SecureQrCryptoArray arr, String authUrl, int c_index, int d_index, int width, int height)** | `SecureQrCryptoArray`의 `c_index에` 있는 암호화 방식을 사용하여 `d_index`에 있는 데이터를 암호화합니다. 그리고 `authURL`, `c_index`, `d_index`, 암호화된 데이터를 함께 JSON으로 묶은 뒤 이를 저장한 QR코드를 생성합니다. 생성된 QR코드 이미지를 byte array 형태로 반환합니다. |
+| bool   | **createSecureQRImage(byte[] qr_byte_arr, int off, String path)** | `qr_byte_arr`로 들어온 byte array 를 QR코드 이미지로 변환한 뒤, `path`에 저장합니다. |
 
 
 TODO reading
