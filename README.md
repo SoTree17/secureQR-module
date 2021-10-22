@@ -111,9 +111,9 @@ This project can be built with gradle.
 If you run <code>jar</code> among gradle tasks, you can find the compiled jar file in <code>/build/libs/secureQR-module-x.y.z.jar</code>
 
 ### dependency
-* zxing:core
-* zxing:javase
-* gson
+* zxing:core 3.4.1
+* zxing:javase 3.4.1
+* gson 2.8.8
 
 ## Open Source Lisence
 ### Copyright
