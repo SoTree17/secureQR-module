@@ -13,6 +13,10 @@ Download [JAR file](https://github.com/SoTree17/secureQR-module/releases) from t
 3. The server decrypts the data and certifies that it is valid.
 4. If decryption and authentication are successful, the original data is sent back to the mobile app
 
+### secureQR example
+
+<img style="width:70%; height:70%" src="https://user-images.githubusercontent.com/48395704/138459799-3e65b3a9-ae1c-495d-a104-aa51ca927dac.png">
+
 
 ## Usage
 ### crypto
