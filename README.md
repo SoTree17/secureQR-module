@@ -36,7 +36,7 @@ By implementing the SecureQrCrypto interface, you can use custom cryptographic o
  
   |Type|Method|Description|  
 |----|------|-----------|
-|String|getInstanceType()|Returns the type of the current instance as a string. If it is a hash object, it returns "Hash".|
+|String|getInstanceType()|Returns the type of the current instance as a string. If it is a hash object, it returns "HASH".|
 |String|getMethodType()|Returns the hash function method as a string.|
 |String|hashing(String message)|Returns hashed message.|
 <br>
