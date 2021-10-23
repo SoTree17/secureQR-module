@@ -1,5 +1,5 @@
 # secureQR-module
-<img src="https://img.shields.io/badge/-Java 11-007396?style=flat-square&logo=Java"> <img src="https://img.shields.io/github/license/SoTree17/secureQR-module?style=flat-square"> <img src="https://img.shields.io/badge/Gradle 6.7-02303A.svg?style=flat-square&logo=Gradle">
+<img src="https://img.shields.io/badge/-Java 11-007396?style=flat-square&logo=Java"> <img src="https://img.shields.io/github/license/SoTree17/secureQR-module?style=flat-square"> <img src="https://img.shields.io/badge/Gradle 6.7-02303A.svg?style=flat-square&logo=Gradle"> <img src="https://img.shields.io/github/workflow/status/SoTree17/secureQR-module/Java%20CI%20with%20Gradle?style=flat-square">
 
 [ENGLISH README](https://github.com/SoTree17/secureQR-module/blob/main/README_EN.md)   
 SecureQR은 자바에서 사용가능한 위변조 방지 기능이 있는 QR 코드 라이브러리 입니다.
