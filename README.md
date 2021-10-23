@@ -86,7 +86,7 @@ SecureQrHash, SecureQrCrypto 그리고 데이터를 저장하는 배열입니다
 | ----------- | --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | byte[]      | createSecureQRcode()  | `SecureQrCryptoArray` arr : 해시,암호화방식, 데이터가 저장된 SecureQrCryptoArray 객체입니다. <br />`String `authUrl : 보안 QR코드를 인증할 서버의 URL입니다. <br />`int` c_index : SecureQrCryptoArray에서 사용할 (암호화, 해시) 쌍이 저장된 index입니다. <br />`int` d_index : SecureQrCryptoArray에서 사용할 데이터의 index입니다. <br />`int` width, `int` height : QR 이미지의 가로, 세로 크기를 지정합니다. | 보안 QR코드 이미지에 대한 `PNG` byte array를 반환합니다. <br />             |
 | boolean     | createSecureQRImage() | `byte[]` qr_byte_arr : 보안 QR코드 이미지의 byte array 입니다.<br /> `int` off : 시작 offset (일반적으로 0)<br />String path : 이미지를 저장할 경로 | 보안 QR 코드를 저장하고, 성공했으면 True, 아니면 False를 반환합니다. |
-
+<br>
 
 
 > **class Generator** <br/>
@@ -96,6 +96,8 @@ SecureQrHash, SecureQrCrypto 그리고 데이터를 저장하는 배열입니다
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | byte[] | **createSecureQRCode(SecureQrCryptoArray arr, String authUrl, int c_index, int d_index, int width, int height)** | `SecureQrCryptoArray`의 `c_index에` 있는 암호화 방식을 사용하여 `d_index`에 있는 데이터를 암호화합니다. 그리고 `authURL`, `c_index`, `d_index`, 암호화된 데이터를 함께 JSON으로 묶은 뒤 이를 저장한 QR코드를 생성합니다. 생성된 QR코드 이미지를 byte array 형태로 반환합니다. |
 | bool   | **createSecureQRImage(byte[] qr_byte_arr, int off, String path)** | `qr_byte_arr`로 들어온 byte array 를 QR코드 이미지로 변환한 뒤, `path`에 저장합니다. |
+<br>
+
 
 > **Interface Readable**<br/>
 > Readable 인터페이스를 구현함으로써,  QR 이미지 파일을 읽고 데이터를 추출할 수 있습니다. 
@@ -104,6 +106,8 @@ SecureQrHash, SecureQrCrypto 그리고 데이터를 저장하는 배열입니다
 | ----------- | -------------------------------------- | ------------------ | ------------------------------------------------------------ |
 | String      | **readSecureQRCode(File qrCodeImage)** | `File` qrCodeImage | QR 이미지 파일을 인자로 받아서, QR 이미지에 담긴 데이터를 호출자에게 반환합니다. |
 | String      | **readSecureQRCode(String filepath)**  | `String` filepath  | QR 이미지 파일의 경로를 인자로 받아서, QR 이미지에 담긴 데이터를 호출자에게 반환합니다. |
+<br>
+
 
 > **class Reader** <br/>
 > QR코드를 읽어서 QR 코드내의 데이터를 추출하는 클래스입니다.
@@ -112,7 +116,7 @@ SecureQrHash, SecureQrCrypto 그리고 데이터를 저장하는 배열입니다
 | ------ | -------------------------------------- | ------------------------------------------------------------ |
 | String | **readSecureQRCode(File qrCodeImage)** | QR 코드 이미지 파일을 읽고, <br />안에 담긴 데이터값을 반환합니다. |
 | String | **readSecureQRCode(String filepath)**  | QR 이미지 파일이 저장된 파일 경로를 읽어<br />값을 반환하는 메소드입니다. |
-
+<br>
 
 
 > <b>class AuthQR</b>    
