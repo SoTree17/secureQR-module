@@ -18,10 +18,12 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.8'
 }
 
+/* if run tests using IntellJ, uncomment the code below*/
+/*
 test {
     useJUnitPlatform()
 }
-
+*/
 compileJava.options.encoding = 'UTF-8'
 
 tasks.withType(JavaCompile) {
