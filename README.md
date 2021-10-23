@@ -4,6 +4,15 @@
 [ENGLISH README](https://github.com/SoTree17/secureQR-module/blob/main/README_EN.md)   
 SecureQR은 자바에서 사용가능한 위변조 방지 기능이 있는 QR 코드 라이브러리 입니다.
 
+## 목차
+* [Get Started](#get-started)
+* [Download](#download)
+* [Usage](#usage)
+* [Build](#build)
+* [Open Source Lisence](#open-source-lisence)
+* [Contribution](#contribution)
+
+
 # Get Started
 Java 프로젝트에 JAR 파일을 외부 라이브러리로 추가함으로써 SecureQR을 사용하실 수 있습니다.
 
