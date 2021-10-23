@@ -20,6 +20,7 @@ Github 릴리즈 탭에서 [JAR 파일](https://github.com/SoTree17/secureQR-mod
 ### secureQR 예시
 
 <img style="width:70%; height:70%" src="https://user-images.githubusercontent.com/48395704/138459799-3e65b3a9-ae1c-495d-a104-aa51ca927dac.png">
+<img style="width:70%; height:70%" src="https://user-images.githubusercontent.com/54317409/138547484-9697e96a-2c23-4226-8f60-0b4d734165a6.gif">
 
 
 ## Usage
