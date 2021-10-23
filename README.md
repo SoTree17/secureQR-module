@@ -114,8 +114,8 @@ SecureQrHash, SecureQrCrypto 그리고 데이터를 저장하는 배열입니다
 
 | Type   | Method                                 | Description                                                  |
 | ------ | -------------------------------------- | ------------------------------------------------------------ |
-| String | **readSecureQRCode(File qrCodeImage)** | QR 코드 이미지 파일을 읽고, <br />안에 담긴 데이터값을 반환합니다. |
-| String | **readSecureQRCode(String filepath)**  | QR 이미지 파일이 저장된 파일 경로를 읽어<br />값을 반환하는 메소드입니다. |
+| String | **readSecureQRCode(File qrCodeImage)** | QR 코드 이미지 파일을 읽고, 안에 담긴 데이터값을 반환합니다. |
+| String | **readSecureQRCode(String filepath)**  | QR 이미지 파일이 저장된 경로로 부터 이미지를 읽어 값을 반환하는 메소드입니다. |
 <br>
 
 
