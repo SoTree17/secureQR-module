@@ -146,6 +146,15 @@ secureQR을 인증하는 클래스입니다.
 이 프로젝트는 Gradle로 빌드할 수 있습니다.  
 gradle tasks 중에 <code>jar</code>을 실행하면 , 컴파일 된 jar파일을 <code>/build/libs/secureQR-module-x.y.z.jar</code> 에서 찾으실 수 있습니다.
 
+- IntellJ 사용시
+빌드 설정에서 Run tests using: IntellJ IDEA 로 되어있다면 `build.gradle`에 아래와 같은 코드를 추가해주세요.
+```
+test {
+    useJUnitPlatform()
+}
+```
+
+
 ### dependency
 * zxing:core 3.4.1
 * zxing:javase 3.4.1
