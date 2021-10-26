@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'org.sotree'
-version '0.0.8'
+version '0.0.9'
 
 sourceCompatibility = '11'
 

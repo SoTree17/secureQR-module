@@ -32,12 +32,12 @@ public class GeneratorTest extends TestCase {
         int d_index = arr.addData(data);
         int width = 200;
         int height = 200;
-
+        
         /* Generator 호출 */
         byte[] result = gen.createSecureQRCode(arr, authUrl, c_index, d_index, width, height);
 
         /* 이미지 지정된 path 로 성공적으로 저장했다면 true */
-        assertTrue(gen.createSecureQRImage(result, 0, "testImg.png"));
+        assertTrue(gen.createSecureQRImage(result, 0, "./testImg.png"));
     }
 
     /* Testcase2  존재하지 않는 Path에 대해서 생성하려할때 */
