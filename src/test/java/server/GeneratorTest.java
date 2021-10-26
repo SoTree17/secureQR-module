@@ -32,7 +32,7 @@ public class GeneratorTest extends TestCase {
         int d_index = arr.addData(data);
         int width = 200;
         int height = 200;
-        
+
         /* Generator 호출 */
         byte[] result = gen.createSecureQRCode(arr, authUrl, c_index, d_index, width, height);
 
@@ -66,7 +66,7 @@ public class GeneratorTest extends TestCase {
         LocalDate now = LocalDate.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd");
         String dailyDirectory = dtf.format(now);
-        String path = "C:\\TestQR\\qrImg\\"+dailyDirectory+"\\";
+        String path = "./genTest/"+dailyDirectory+"/";
         String fileName = "testImg.png";
 
         assertTrue(gen.createSecureQRImage(result, 0, path+fileName));
