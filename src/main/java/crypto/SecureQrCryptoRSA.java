@@ -22,7 +22,7 @@ public class SecureQrCryptoRSA implements SecureQrCrypto {
         SecureRandom secureRandom = new SecureRandom();
         KeyPairGenerator keyGen;
         keyGen = KeyPairGenerator.getInstance("RSA");
-        keyGen.initialize(1024, secureRandom);
+        keyGen.initialize(4096, secureRandom);
 
         KeyPair keyPair = keyGen.genKeyPair();
 
@@ -36,10 +36,16 @@ public class SecureQrCryptoRSA implements SecureQrCrypto {
     @Override
     public String encrypt(String message) throws Exception {
         Cipher cipher = Cipher.getInstance("RSA");
-        cipher.init(Cipher.ENCRYPT_MODE, this.publicKey);
-        byte[] encryptedMessage = cipher.doFinal(message.getBytes());
-
-        return Base64.getEncoder().encodeToString(encryptedMessage);
+        try {
+            if (message.length() > 500) {
+                throw new IllegalArgumentException("데이터가 너무 큽니다!");
+            }
+            cipher.init(Cipher.ENCRYPT_MODE, this.publicKey);
+            byte[] encryptedMessage = cipher.doFinal(message.getBytes());
+            return Base64.getEncoder().encodeToString(encryptedMessage);
+        } catch (Exception e) {
+            return "데이터가 너무 큽니다!";
+        }
     }
 
 
@@ -49,6 +55,7 @@ public class SecureQrCryptoRSA implements SecureQrCrypto {
     @Override
     public String decrypt(String message) throws Exception {
         Cipher cipher = Cipher.getInstance("RSA");
+
         byte[] byteEncrypted = Base64.getDecoder().decode(message.getBytes());
         cipher.init(Cipher.DECRYPT_MODE, this.privateKey);
         byte[] decryptedMessage = cipher.doFinal(byteEncrypted);

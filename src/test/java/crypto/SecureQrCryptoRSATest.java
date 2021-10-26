@@ -11,7 +11,7 @@ public class SecureQrCryptoRSATest extends TestCase {
      * Test case for RSA Encryption and decryption
      */
     public void testEncryptDecrypt() throws Exception {
-        String origin = RandomString.getString(16);
+        String origin = RandomString.getString(500);
 
         SecureQrCryptoRSA rsa = new SecureQrCryptoRSA();
         SecureQrCrypto myCrpyto = rsa;
@@ -34,7 +34,7 @@ public class SecureQrCryptoRSATest extends TestCase {
     }
 
     public void testWithHash() throws Exception {
-        String origin = RandomString.getString(200);
+        String origin = RandomString.getString(500);
 
         boolean passed = true;
 

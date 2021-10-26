@@ -14,7 +14,7 @@ public class SecureQrCryptoAES256Test extends TestCase {
     }
 
     public void testEncryptDecrypt() throws Exception {
-        String origin = RandomString.getString(16);
+        String origin = RandomString.getString(500);
 
         SecureQrCryptoAES256 aes256 = new SecureQrCryptoAES256();
         SecureQrCrypto myCrpyto = aes256;
@@ -30,7 +30,7 @@ public class SecureQrCryptoAES256Test extends TestCase {
     }
 
     public void testWithHash() throws Exception {
-        String origin = RandomString.getString(200);
+        String origin = RandomString.getString(500);
 
         boolean passed = true;
 

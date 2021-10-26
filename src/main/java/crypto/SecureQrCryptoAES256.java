@@ -45,13 +45,20 @@ public class SecureQrCryptoAES256 implements SecureQrCrypto {
 
     @Override
     public String encrypt(String message) throws Exception {
-        Cipher cipher = Cipher.getInstance(algorithm);
-        SecretKeySpec keySpec = new SecretKeySpec(iv.getBytes(), "AES");
-        IvParameterSpec ivParamSpec = new IvParameterSpec(iv.getBytes());
-        cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivParamSpec);
+        try {
+            if (message.length() > 500) {
+                throw new IllegalArgumentException("데이터가 너무 큽니다!");
+            }
+            Cipher cipher = Cipher.getInstance(algorithm);
+            SecretKeySpec keySpec = new SecretKeySpec(iv.getBytes(), "AES");
+            IvParameterSpec ivParamSpec = new IvParameterSpec(iv.getBytes());
+            cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivParamSpec);
 
-        byte[] encryptedMessage = cipher.doFinal(message.getBytes(StandardCharsets.UTF_8));
-        return Base64.getEncoder().encodeToString(encryptedMessage);
+            byte[] encryptedMessage = cipher.doFinal(message.getBytes(StandardCharsets.UTF_8));
+            return Base64.getEncoder().encodeToString(encryptedMessage);
+        } catch (Exception e) {
+            return "데이터가 너무 큽니다!";
+        }
     }
 
     @Override
