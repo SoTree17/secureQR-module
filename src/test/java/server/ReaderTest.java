@@ -23,7 +23,7 @@ public class ReaderTest extends TestCase {
 
         Readable read = new Reader();
         /* suppose File is given as a parameter */
-        String path = "testImg.png"; // 서버에서 Params
+        String path = "./testImg.png"; // 서버에서 Params
         File file = new File(path);
 
         String result = read.readSecureQRCode(file);
