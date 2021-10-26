@@ -28,4 +28,29 @@ public class SecureQrCryptoAES256Test extends TestCase {
         assertEquals("CRYPTO", aes.getInstanceType());
         assertEquals("AES256", aes.getMethodType());
     }
+
+    public void testWithHash() throws Exception {
+        String origin = RandomString.getString(200);
+
+        boolean passed = true;
+
+        SecureQrCrypto aes256 = new SecureQrCryptoAES256();
+
+        SecureQrHash md5 = new SecureQrHashMD5();
+        SecureQrHash sha256 = new SecureQrHashSHA256();
+        SecureQrHash sha512 = new SecureQrHashSHA512();
+
+        SecureQrHash[] hashes = { md5, sha256, sha512 };
+
+        for(SecureQrHash h: hashes) {
+            String hashed = h.hashing(origin);
+            String cipherText = aes256.encrypt(hashed);
+            String decrypted = aes256.decrypt(cipherText);
+
+            if(!hashed.equals(decrypted)) {
+                passed = false;
+            }
+        }
+        assertTrue(passed);
+    }
 }
