@@ -11,7 +11,7 @@ public class SecureQrCryptoRSATest extends TestCase {
      * Test case for RSA Encryption and decryption
      */
     public void testEncryptDecrypt() throws Exception {
-        String origin = RandomString.getString(16);
+        String origin = RandomString.getString(500);
 
         SecureQrCryptoRSA rsa = new SecureQrCryptoRSA();
         SecureQrCrypto myCrpyto = rsa;
@@ -31,5 +31,29 @@ public class SecureQrCryptoRSATest extends TestCase {
         SecureQrCryptoRSA rsa = new SecureQrCryptoRSA();
         assertEquals("CRYPTO", rsa.getInstanceType());
         assertEquals("RSA", rsa.getMethodType());
+    }
+
+    public void testWithHash() throws Exception {
+        String origin = RandomString.getString(500);
+
+        boolean passed = true;
+
+        SecureQrCrypto rsa = new SecureQrCryptoRSA();
+
+        SecureQrHash md5 = new SecureQrHashMD5();
+        SecureQrHash sha256 = new SecureQrHashSHA256();
+        SecureQrHash sha512 = new SecureQrHashSHA512();
+
+        SecureQrHash[] hashes = { md5, sha256, sha512 };
+
+        for(SecureQrHash h: hashes) {
+            String hashed = h.hashing(origin);
+            String cipherText = rsa.encrypt(hashed);
+            String decrypted = rsa.decrypt(cipherText);
+            if(!hashed.equals(decrypted)) {
+                passed = false;
+            }
+        }
+        assertTrue(passed);
     }
 }
