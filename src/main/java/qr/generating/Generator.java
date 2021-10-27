@@ -12,9 +12,6 @@ import javax.imageio.stream.FileImageOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class Generator implements Generatable {
 
@@ -67,6 +64,7 @@ public class Generator implements Generatable {
      * @param off         시작 오프셋
      * @param path        저장 경로 (디렉토리+파일명)
      * @return 이미지 생성 성공 여부
+     * @exception NullPointerException param으로 받은 경로의 부모디렉토리가 없이 "파일이름만" 받았을 때 발생 가능
      */
     @Override
     public boolean createSecureQRImage(byte[] qr_byte_arr, int off, String path) {
