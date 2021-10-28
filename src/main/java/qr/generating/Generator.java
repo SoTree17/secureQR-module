@@ -67,7 +67,7 @@ public class Generator implements Generatable {
      * @exception NullPointerException param으로 받은 경로의 부모디렉토리가 없이 "파일이름만" 받았을 때 발생 가능
      */
     @Override
-    public boolean createSecureQRImage(byte[] qr_byte_arr, int off, String path) {
+    public boolean createSecureQRImage(byte[] qr_byte_arr, int off, String path) throws NullPointerException {
         boolean status;
         try {
             File qrImg = new File(path);

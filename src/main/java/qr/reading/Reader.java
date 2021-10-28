@@ -20,7 +20,7 @@ public class Reader implements Readable {
      * @exception IIOException param으로 받은 경로가 디렉토리 없이 "파일이름만" 있을 때 발생 가능
      */
     @Override
-    public String readSecureQRCode(File qrCodeImage) throws IOException {
+    public String readSecureQRCode(File qrCodeImage) throws IOException, NotFoundException {
         try {
             BufferedImage bf = ImageIO.read(qrCodeImage);
             LuminanceSource source = new BufferedImageLuminanceSource(bf);
@@ -42,7 +42,7 @@ public class Reader implements Readable {
      * @exception IIOException param으로 받은 경로가 디렉토리 없이 파일이름만 있을 때 발생 가능
      */
     @Override
-    public String readSecureQRCode(String filepath) throws IOException {
+    public String readSecureQRCode(String filepath) throws IOException, NotFoundException {
         try {
             BufferedImage bf = ImageIO.read(new FileInputStream(filepath));
             LuminanceSource source = new BufferedImageLuminanceSource(bf);
